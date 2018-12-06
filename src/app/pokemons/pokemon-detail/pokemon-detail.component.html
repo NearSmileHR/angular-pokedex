@@ -1,0 +1,25 @@
+<mat-card *ngIf="pokemonInfos" class="details">
+  <mat-grid-list cols="2" rowHeight="150px">
+    <mat-grid-tile rowspan="2">
+      <mat-card class="noshadow">
+        <img mat-card-image class="pkmn-pic" [src]="'../assets/img/official-artwork/' + pokemonInfos.id + '.png'" alt="-">
+        <mat-card-title>No. {{pokemonInfos.id | number:'3.0-0'}}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="2">
+      <mat-list>
+        <mat-list-item>{{pokemonInfos.name}} |></mat-list-item>
+        <mat-list-item>
+          <mat-chip-list>
+            <mat-chip *ngFor="let type of pokemonInfos.types">{{type}}</mat-chip>
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-list-item>Taille: {{pokemonInfos.height | number:'0.1-1'}} m</mat-list-item>
+        <mat-list-item>Poids: {{pokemonInfos.weight | number:'0.1-1'}} kg</mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=2 rowspan="1">
+      <p>{{pokemonInfos.description}}</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
