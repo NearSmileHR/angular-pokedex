@@ -1,9 +1,9 @@
 <mat-card *ngIf="pokemonInfos" class="details">
   <mat-grid-list cols="2" rowHeight="150px">
-    <mat-grid-tile rowspan="2">
-      <mat-card class="noshadow">
-        <img mat-card-image class="pkmn-pic" [src]="'../assets/img/official-artwork/' + pokemonInfos.id + '.png'" alt="-">
-        <mat-card-title>No. {{pokemonInfos.id | number:'3.0-0'}}</mat-card-title>
+    <mat-grid-tile class="test" rowspan="2">
+      <mat-card class="detail-card">
+        <img mat-card-image class="detail-card-img" [src]="'../assets/img/official-artwork/' + pokemonInfos.id + '.png'" alt="-">
+        <mat-card-title class="detail-card-number">No. {{pokemonInfos.id | number:'3.0-0'}}</mat-card-title>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile rowspan="2">
@@ -23,3 +23,5 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
+
+<a routerLink="/"><button class="detail-button">< Retour</button></a>

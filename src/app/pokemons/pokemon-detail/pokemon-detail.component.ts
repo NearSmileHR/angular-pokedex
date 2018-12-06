@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Pokemon} from '../pokemon';
 import {PokemonService} from '../pokemon.service';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -21,6 +22,10 @@ export class PokemonDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.pokemonService.getPokemonById(id)
       .subscribe(pokemon => this.pokemonInfos = pokemon);
+  }
+
+  goToMainPage(): void {
+
   }
 
 }

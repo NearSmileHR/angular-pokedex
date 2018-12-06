@@ -1,14 +1,23 @@
-.noshadow {
+.detail-card {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  text-align: center;
+}
+.detail-card-number {
+  font-size: 16px;
 }
 
 .details {
-  width: 800px;
+  width: 400px;
 }
 
-.pkmn-pic {
+.detail-card-img {
   height: 200px;
   width: auto;
+}
+
+.detail-button {
+  margin-top: 5px;
+  padding: 3px;
 }

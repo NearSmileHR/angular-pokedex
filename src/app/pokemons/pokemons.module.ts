@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule, MatChipsModule, MatGridListModule} from '@angular/material';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [PokemonListComponent, PokemonDetailComponent],
@@ -15,6 +16,7 @@ import {MatCardModule, MatChipsModule, MatGridListModule} from '@angular/materia
     MatGridListModule,
     MatCardModule,
     MatChipsModule,
+    InfiniteScrollModule,
     RouterModule
   ]
 })

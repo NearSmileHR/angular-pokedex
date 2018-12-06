@@ -21,4 +21,8 @@ export class PokemonListComponent implements OnInit {
       .subscribe(pkmnList => this.pkmnList = pkmnList['data']);
   }
 
+  onScroll() {
+    console.log('scrolled!!');
+  }
+
 }
