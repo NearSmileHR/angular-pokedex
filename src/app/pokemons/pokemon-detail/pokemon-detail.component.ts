@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Pokemon} from '../pokemon';
 import {PokemonService} from '../pokemon.service';
-import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -24,8 +23,9 @@ export class PokemonDetailComponent implements OnInit {
       .subscribe(pokemon => this.pokemonInfos = pokemon);
   }
 
-  goToMainPage(): void {
-
+  playSound(): void {
+    const sound = document.getElementById('sound');
+    // @ts-ignore
+    sound.play();
   }
-
 }

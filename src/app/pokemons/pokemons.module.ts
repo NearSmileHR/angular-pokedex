@@ -5,7 +5,7 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { RouterModule } from '@angular/router';
 
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule, MatChipsModule, MatGridListModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatChipsModule, MatGridListModule, MatIconModule} from '@angular/material';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
@@ -16,6 +16,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     MatGridListModule,
     MatCardModule,
     MatChipsModule,
+    MatButtonModule,
+    MatIconModule,
     InfiniteScrollModule,
     RouterModule
   ]

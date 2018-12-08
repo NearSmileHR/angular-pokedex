@@ -9,11 +9,13 @@ import { Pokemon } from '../pokemon';
 })
 export class PokemonListComponent implements OnInit {
   pkmnList: JSON;
+  fullListLoaded: boolean;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
     this.getPokemons();
+    this.fullListLoaded = false;
   }
 
   getPokemons(): void {
@@ -21,8 +23,17 @@ export class PokemonListComponent implements OnInit {
       .subscribe(pkmnList => this.pkmnList = pkmnList['data']);
   }
 
+  getPokemonsFull(): void {
+    this.pokemonService.getPokemonsFull()
+      .subscribe(pkmnList => this.pkmnList = pkmnList['data']);
+  }
+
   onScroll() {
     console.log('scrolled!!');
+    if (!this.fullListLoaded) {
+      this.fullListLoaded = true;
+      this.getPokemonsFull();
+    }
   }
 
 }

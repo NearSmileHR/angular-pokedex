@@ -1,3 +1,6 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
 <mat-card *ngIf="pokemonInfos" class="details">
   <mat-grid-list cols="2" rowHeight="150px">
     <mat-grid-tile class="test" rowspan="2">
@@ -8,7 +11,11 @@
     </mat-grid-tile>
     <mat-grid-tile rowspan="2">
       <mat-list>
-        <mat-list-item>{{pokemonInfos.name}} |></mat-list-item>
+        <mat-list-item>
+          <p>{{pokemonInfos.name}}</p>
+          <audio autoplay id="sound"><source [src]="'../assets/audio/' + pokemonInfos.id + '.mp3'" type="audio/mp3" /></audio>
+          <button (click)="playSound();" mat-button><mat-icon>play_circle_outline</mat-icon></button>
+        </mat-list-item>
         <mat-list-item>
           <mat-chip-list>
             <mat-chip *ngFor="let type of pokemonInfos.types">{{type}}</mat-chip>
@@ -24,4 +31,4 @@
   </mat-grid-list>
 </mat-card>
 
-<a routerLink="/"><button class="detail-button">< Retour</button></a>
+<a button mat-raised-button class="detail-button" routerLink="/">< Retour</a>
