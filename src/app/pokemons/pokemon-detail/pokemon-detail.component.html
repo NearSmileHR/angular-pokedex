@@ -13,7 +13,6 @@
       <mat-list>
         <mat-list-item>
           <p>{{pokemonInfos.name}}</p>
-          <audio autoplay id="sound"><source [src]="'../assets/audio/' + pokemonInfos.id + '.mp3'" type="audio/mp3" /></audio>
           <button (click)="playSound();" mat-button><mat-icon>play_circle_outline</mat-icon></button>
         </mat-list-item>
         <mat-list-item>
@@ -30,5 +29,3 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
-
-<a button mat-raised-button class="detail-button" routerLink="/">< Retour</a>

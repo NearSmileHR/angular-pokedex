@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon';
 
@@ -10,6 +10,8 @@ import { Pokemon } from '../pokemon';
 export class PokemonListComponent implements OnInit {
   pkmnList: JSON;
   fullListLoaded: boolean;
+  selectedPokemonId: number;
+  @Output() selectedPokemonChanged: EventEmitter<number> = new EventEmitter();
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -34,6 +36,11 @@ export class PokemonListComponent implements OnInit {
       this.fullListLoaded = true;
       this.getPokemonsFull();
     }
+  }
+
+  selectPokemon(id) {
+    this.selectedPokemonId = id;
+    this.selectedPokemonChanged.emit(this.selectedPokemonId);
   }
 
 }

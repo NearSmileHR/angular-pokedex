@@ -5,11 +5,21 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { RouterModule } from '@angular/router';
 
 import { MatListModule } from '@angular/material/list';
-import {MatButtonModule, MatCardModule, MatChipsModule, MatGridListModule, MatIconModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatSidenavModule
+} from '@angular/material';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { PokedexComponent } from './pokedex/pokedex.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
-  declarations: [PokemonListComponent, PokemonDetailComponent],
+  declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent],
   imports: [
     CommonModule,
     MatListModule,
@@ -18,7 +28,10 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     MatChipsModule,
     MatButtonModule,
     MatIconModule,
+    MatSidenavModule,
+    MatInputModule,
     InfiniteScrollModule,
+    SharedModule,
     RouterModule
   ]
 })
