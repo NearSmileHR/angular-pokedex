@@ -1,9 +1,9 @@
 <div class="list-container">
   <mat-form-field class="example-full-width">
-    <input matInput ngModel="searchText" placeholder="Recherche" value="">
+    <input #searchfield matInput (keyup)="0" placeholder="Recherche" value="">
   </mat-form-field>
   <mat-list infiniteScroll [scrollWindow]="false" (scrolled)="onScroll()">
-    <a mat-list-item *ngFor="let pokemon of pkmnList | filter : searchText" (click)="selectPokemon(pokemon.id)" [ngClass]="{selected: pokemon.id === selectedPokemonId}"> <!-- routerLink="/detail/{{pokemon.id}}"> -->
+    <a mat-list-item *ngFor="let pokemon of pkmnList | filter : searchfield.value" (click)="selectPokemon(pokemon.id)" [ngClass]="{selected: pokemon.id === selectedPokemonId}"> <!-- routerLink="/detail/{{pokemon.id}}"> -->
       <img matListAvatar [src]="'../assets/img/sprites/' + pokemon.id + '.png'" alt="...">
       <h3 matLine> {{pokemon.id}}. {{pokemon.name}} </h3>
     </a>

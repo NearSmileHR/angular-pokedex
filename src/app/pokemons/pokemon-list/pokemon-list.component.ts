@@ -10,6 +10,7 @@ import { Pokemon } from '../pokemon';
 export class PokemonListComponent implements OnInit {
   pkmnList: JSON;
   fullListLoaded: boolean;
+  searchText: String;
   selectedPokemonId: number;
   @Output() selectedPokemonChanged: EventEmitter<number> = new EventEmitter();
 
