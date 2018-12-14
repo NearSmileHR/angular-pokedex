@@ -8,23 +8,32 @@ import { PokemonService } from '../pokemon.service';
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent implements OnInit {
-  pokemons;
-  selectedPokemon: number;
+  teamPokemons: Array<Pokemon> = new Array<Pokemon>();
+  selectedPokemon: String = new String;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.getTeam();
+    this.getTeamIds();
     // this.pokemons = [42, 12, 6, 20, 34, 2];
   }
 
-  selectPokemon(id): void {
-    this.selectedPokemon = id;
+  selectPokemon(pkmn): void {
+    this.selectedPokemon = pkmn;
   }
 
-  getTeam(): void {
-    this.pokemonService.getTeam()
-      .subscribe(team => this.pokemons = team);
+  getTeamIds(): void {
+    this.pokemonService.getTeamIds()
+      .subscribe(teamIds => this.getTeamPokemons(teamIds));
+  }
+
+  getTeamPokemons(teamIds): void {
+    this.pokemonService.getTeamPokemons(teamIds)
+      .subscribe(pokemons => {
+        for (let pokemon of pokemons) {
+          this.teamPokemons.push(pokemon);
+        }
+    });
   }
 
 }

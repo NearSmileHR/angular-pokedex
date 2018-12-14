@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Pokemon } from './pokemon';
 import { environment } from '../../environments/environment';
 import { CookieService } from 'ngx-cookie';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class PokemonService {
     return this.http.get<Pokemon>(environment.pokemonApiUrl + 'pokemons/' + id);
   }
 
-  getTeam(): Observable<any> {
+  getTeamIds(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.cookieService.get('access_token')
@@ -37,4 +38,12 @@ export class PokemonService {
     return this.http.get<any>(environment.pokemonApiUrl + 'trainers/me/team', httpOptions);
   }
 
+  getTeamPokemons(idList): Observable<any[]> {
+        let responsesTab: Array<Observable<Pokemon>> = new Array<Observable<Pokemon>>();
+        for (let id of idList) {
+          console.log('id: ' + +id);
+          responsesTab.push(this.http.get<Pokemon>(environment.pokemonApiUrl + 'pokemons/' + +id));
+        }
+        return forkJoin(responsesTab);
+  }
 }
