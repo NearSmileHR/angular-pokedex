@@ -17,9 +17,10 @@ import {
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import {SharedModule} from '../shared/shared.module';
+import { TeamComponent } from './team/team.component';
 
 @NgModule({
-  declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent],
+  declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent, TeamComponent],
   imports: [
     CommonModule,
     MatListModule,

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  pokemonApiUrl: 'http://51.75.122.159:3000/'
+  pokemonApiUrl: 'http://51.75.122.159:3000/',
+  loginMail: 'louis.marie@ig2i.centralelille.fr',
+  loginMdp: 'azerty12'
 };
 
 /*
