@@ -1,3 +1,12 @@
-<p>
-  team works!
-</p>
+<div class="team-container">
+  <p>Ma team:</p>
+  <div>
+    <mat-grid-list *ngIf="pokemons" cols="{{pokemons.length}}" rowHeight="1:1">
+      <a mat-grid-tile *ngFor="let pokemon of pokemons" (click)="selectPokemon(pokemon)" [ngClass]="{selected: pokemon === selectedPokemon}">
+        <img matListAvatar class="team-member-icon" [src]="'../assets/img/sprites/' + pokemon + '.png'" alt="...">
+      </a>
+    </mat-grid-list>
+    <p>{{selectedPokemon}}</p>
+  </div>
+  <p *ngIf="!pokemons">Vous n'avez pas encore de team!</p>
+</div>
