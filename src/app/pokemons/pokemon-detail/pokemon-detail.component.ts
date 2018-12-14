@@ -8,7 +8,7 @@ import {PokemonService} from '../pokemon.service';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss']
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent implements OnChanges {
   pokemonInfos: Pokemon;
   sound = new Audio();
   @Input() selectedPokemonId: number;

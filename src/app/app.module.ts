@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     AppRoutingModule,
     PokemonsModule,
+    CookieModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

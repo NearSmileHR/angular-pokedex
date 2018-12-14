@@ -9,8 +9,6 @@ import {LoginComponent} from './login/login.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'pokedex', component: PokedexComponent },
-  { path: 'pokemons', component: PokemonListComponent },
-  { path: 'detail/:id', component: PokemonDetailComponent },
   { path: 'login', component: LoginComponent }
 ];
 

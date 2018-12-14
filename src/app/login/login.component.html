@@ -1,14 +1,14 @@
 <h2>Login</h2>
-<form (ngSubmit)="onSubmit()">
-  <div class="form-group">
+<div>
+  <div>
     <label id="username">Username</label>
     <input type="text" [value]="this.mail"/>
   </div>
-  <div class="form-group">
+  <div>
     <label id="password">Password</label>
     <input type="password" [value]="this.mdp"/>
   </div>
-  <div class="form-group">
+  <div>
     <button (click)="connexion()" class="btn btn-primary">Login</button>
   </div>
-</form>
+</div>
