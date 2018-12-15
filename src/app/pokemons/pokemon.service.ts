@@ -46,4 +46,22 @@ export class PokemonService {
         }
         return forkJoin(responsesTab);
   }
+
+  updateTeam(pkmnList): Observable<any> {
+    let idList = new Array<Number>();
+    for (let pkmn of pkmnList) {
+      idList.push(pkmn.id);
+    }
+
+    idList = [1, 2, 3, 4, 5, 6];
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.cookieService.get('access_token')
+      })
+    };
+
+    console.log('Bearer ' + this.cookieService.get('access_token'));
+    return this.http.put<any>(environment.pokemonApiUrl + 'trainers/me/team', idList, httpOptions);
+  }
 }

@@ -9,7 +9,7 @@ import { PokemonService } from '../pokemon.service';
 })
 export class TeamComponent implements OnInit {
   teamPokemons: Array<Pokemon> = new Array<Pokemon>();
-  selectedPokemon: String = new String;
+  selectedPokemon: String = '';
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -30,10 +30,24 @@ export class TeamComponent implements OnInit {
   getTeamPokemons(teamIds): void {
     this.pokemonService.getTeamPokemons(teamIds)
       .subscribe(pokemons => {
+        this.teamPokemons = [];
         for (let pokemon of pokemons) {
           this.teamPokemons.push(pokemon);
         }
     });
+  }
+
+  delete(pokemon): void {
+    const index = this.teamPokemons.indexOf(pokemon, 0);
+    if (index > -1) {
+      this.teamPokemons.splice(index, 1);
+      this.selectedPokemon = '';
+    }
+  }
+
+  updateTeam(): void {
+    this.pokemonService.updateTeam(this.teamPokemons)
+      .subscribe(result => console.log('Team updated!'));
   }
 
 }

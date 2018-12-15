@@ -1,12 +1,15 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
 <div class="team-container">
-  <p>Ma team:</p>
+  <p>Ma team: <mat-icon (click)="getTeamIds()">vertical_align_bottom</mat-icon> <mat-icon (click)="updateTeam()">vertical_align_top</mat-icon></p>
   <div>
     <mat-grid-list *ngIf="teamPokemons" cols="{{teamPokemons.length}}" rowHeight="1:1">
-      <a mat-grid-tile *ngFor="let pokemon of teamPokemons" (click)="selectPokemon(pokemon)" [ngClass]="{selected: pokemon.id === selectedPokemon}">
+      <mat-grid-tile *ngFor="let pokemon of teamPokemons" (click)="selectPokemon(pokemon)" [ngClass]="{selected: pokemon.id === selectedPokemon.id}">
         <img matListAvatar class="team-member-icon" [src]="'../assets/img/sprites/' + pokemon.id + '.png'" alt="...">
-      </a>
+      </mat-grid-tile>
     </mat-grid-list>
-    <p>{{selectedPokemon.name}}</p>
+    <p class="team-details" *ngIf="selectedPokemon">{{selectedPokemon.name}} <mat-icon (click)="delete(selectedPokemon)">delete_forever</mat-icon></p>
   </div>
   <p *ngIf="!teamPokemons">Vous n'avez pas encore de team!</p>
 </div>
