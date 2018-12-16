@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Pokemon} from '../pokemon';
 import {PokemonService} from '../pokemon.service';
@@ -12,12 +12,9 @@ export class PokemonDetailComponent implements OnChanges {
   pokemonInfos: Pokemon;
   sound = new Audio();
   @Input() selectedPokemonId: number;
+  @Output() pokemonAdded: EventEmitter<Pokemon> = new EventEmitter();
 
   constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
-
-  ngOnInit() {
-    // this.getPokemon();
-  }
 
   ngOnChanges() {
     if (this.selectedPokemonId) {
@@ -43,5 +40,10 @@ export class PokemonDetailComponent implements OnChanges {
     if (this.sound) {
       this.sound.play();
     }
+  }
+
+  addToTeam(pkmn): void {
+    // this.selectedPokemonChanged.emit(this.selectedPokemonId);
+    this.pokemonAdded.emit(pkmn);
   }
 }

@@ -53,7 +53,7 @@ export class PokemonService {
       idList.push(pkmn.id);
     }
 
-    idList = [1, 2, 3, 4, 5, 6];
+    // idList = [1, 2, 3, 4, 77];
 
     const httpOptions = {
       headers: new HttpHeaders({

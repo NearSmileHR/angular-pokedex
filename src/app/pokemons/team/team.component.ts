@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Pokemon} from '../pokemon';
 import { PokemonService } from '../pokemon.service';
 
@@ -7,15 +7,25 @@ import { PokemonService } from '../pokemon.service';
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss']
 })
-export class TeamComponent implements OnInit {
+export class TeamComponent implements OnInit, OnChanges {
   teamPokemons: Array<Pokemon> = new Array<Pokemon>();
   selectedPokemon: String = '';
+  @Input() newPokemonAdded: Pokemon;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
     this.getTeamIds();
     // this.pokemons = [42, 12, 6, 20, 34, 2];
+  }
+
+  ngOnChanges() {
+    if (this.newPokemonAdded) {
+      if (this.teamPokemons.length < 6) {
+        this.teamPokemons.push(this.newPokemonAdded);
+        this.newPokemonAdded = null;
+      }
+    }
   }
 
   selectPokemon(pkmn): void {
