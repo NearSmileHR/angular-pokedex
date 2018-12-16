@@ -18,6 +18,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import {SharedModule} from '../shared/shared.module';
 import { TeamComponent } from './team/team.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent, TeamComponent],
@@ -32,6 +33,7 @@ import { TeamComponent } from './team/team.component';
     MatSidenavModule,
     MatInputModule,
     InfiniteScrollModule,
+    FormsModule,
     SharedModule,
     RouterModule
   ]
