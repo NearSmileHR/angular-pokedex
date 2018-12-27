@@ -8,8 +8,10 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pkmnList: JSON;
+  pkmnList: Array<Pokemon> = new Array<Pokemon>();
   fullListLoaded: boolean;
+  offset: number;
+  limit: number;
   searchText: String;
   selectedPokemonId: number;
   @Output() selectedPokemonChanged: EventEmitter<number> = new EventEmitter();
@@ -17,6 +19,8 @@ export class PokemonListComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
+    this.offset = 0;
+    this.limit = 10;
     this.searchText = '';
     this.getPokemons();
     this.fullListLoaded = false;
@@ -35,7 +39,15 @@ export class PokemonListComponent implements OnInit {
   }
 
   getPokemonsNext(): void {
-    //
+      this.offset += this.limit;
+      this.fullListLoaded = (this.offset > 151);
+
+      this.pokemonService.getPokemonsWithParams(this.offset, this.limit)
+        .subscribe(pkmnList => {
+          for (let pkmn of pkmnList['data']) {
+            this.pkmnList.push(pkmn);
+          }
+        });
   }
 
   getPokemonsFull(): void {
@@ -46,8 +58,7 @@ export class PokemonListComponent implements OnInit {
   onScroll() {
     console.log('scrolled!!');
     if (!this.fullListLoaded) {
-      this.fullListLoaded = true;
-      this.getPokemonsFull();
+      this.getPokemonsNext();
     }
   }
 

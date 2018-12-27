@@ -19,6 +19,11 @@ export class PokemonService {
     return this.http.get<JSON>(this.pokemonsUrl);
   }
 
+  getPokemonsWithParams(offset, limit): Observable<JSON> {
+    console.log(this.pokemonsUrl);
+    return this.http.get<JSON>(this.pokemonsUrl + '?offset=' + offset + '&limit=' + limit);
+  }
+
   getPokemonsFull(): Observable<JSON> {
     console.log(this.pokemonsUrl);
     return this.http.get<JSON>(this.pokemonsUrl + '?offset=0&limit=151');
