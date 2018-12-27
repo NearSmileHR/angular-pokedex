@@ -5,6 +5,7 @@ import { Pokemon } from './pokemon';
 import { environment } from '../../environments/environment';
 import { CookieService } from 'ngx-cookie';
 import { forkJoin } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { forkJoin } from 'rxjs';
 export class PokemonService {
   pokemonsUrl = environment.pokemonApiUrl + 'pokemons';
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private snackBar: MatSnackBar) { }
 
   getPokemons(): Observable<JSON> {
     console.log(this.pokemonsUrl);
@@ -68,5 +69,9 @@ export class PokemonService {
 
     console.log('Bearer ' + this.cookieService.get('access_token'));
     return this.http.put<any>(environment.pokemonApiUrl + 'trainers/me/team', idList, httpOptions);
+  }
+
+  openSnackBar(message: string, action?: string): void {
+    this.snackBar.open(message, action, {duration: 2000});
   }
 }

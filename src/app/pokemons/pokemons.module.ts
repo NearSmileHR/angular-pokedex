@@ -12,7 +12,7 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
-  MatSidenavModule
+  MatSidenavModule, MatSnackBarModule
 } from '@angular/material';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { PokedexComponent } from './pokedex/pokedex.component';
@@ -32,6 +32,7 @@ import {FormsModule} from '@angular/forms';
     MatIconModule,
     MatSidenavModule,
     MatInputModule,
+    MatSnackBarModule,
     InfiniteScrollModule,
     FormsModule,
     SharedModule,
