@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { CookieModule } from 'ngx-cookie';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatListModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,11 @@ import { CookieModule } from 'ngx-cookie';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatListModule,
     PokemonsModule,
     CookieModule.forRoot()
   ],

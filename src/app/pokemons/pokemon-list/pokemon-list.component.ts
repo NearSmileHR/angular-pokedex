@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon';
 
@@ -24,6 +24,13 @@ export class PokemonListComponent implements OnInit {
     this.searchText = '';
     this.getPokemons();
     this.fullListLoaded = false;
+  }
+
+  checkListSize() {
+    if (!this.fullListLoaded) {
+      this.getPokemonsFull();
+      this.fullListLoaded = true;
+    }
   }
 
   getPokemons(): void {

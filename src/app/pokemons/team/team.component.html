@@ -2,14 +2,18 @@
       rel="stylesheet">
 
 <div class="team-container">
-  <p>Ma team: <mat-icon (click)="getTeamIds()">vertical_align_bottom</mat-icon> <mat-icon (click)="updateTeam()">vertical_align_top</mat-icon></p>
-  <div>
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile><span class="team-title">Ma team:</span></mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="getTeamIds()"><mat-icon>cloud_download</mat-icon> Download</button></mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="accent" (click)="updateTeam()"><mat-icon>cloud_upload</mat-icon> Upload</button></mat-grid-tile>
+  </mat-grid-list>
+  <div class="team-list">
     <mat-grid-list *ngIf="teamPokemons" cols="{{teamPokemons.length}}" rowHeight="1:1">
       <mat-grid-tile *ngFor="let pokemon of teamPokemons" (click)="selectPokemon(pokemon)" [ngClass]="{selected: pokemon.id === selectedPokemon.id}">
         <img matListAvatar class="team-member-icon" [src]="'../assets/img/sprites/' + pokemon.id + '.png'" alt="...">
       </mat-grid-tile>
     </mat-grid-list>
-    <p class="team-details" *ngIf="selectedPokemon">{{selectedPokemon.name}} <mat-icon (click)="delete(selectedPokemon)">delete_forever</mat-icon></p>
+    <button class="team-details" mat-raised-button color="warn" *ngIf="selectedPokemon" (click)="delete(selectedPokemon)">{{selectedPokemon.name}} <mat-icon>delete_forever</mat-icon></button>
   </div>
   <p *ngIf="!teamPokemons">Vous n'avez pas encore de team!</p>
 </div>

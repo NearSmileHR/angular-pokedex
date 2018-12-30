@@ -12,12 +12,13 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
-  MatSidenavModule
+  MatSidenavModule, MatSnackBarModule
 } from '@angular/material';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import {SharedModule} from '../shared/shared.module';
 import { TeamComponent } from './team/team.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent, TeamComponent],
@@ -31,7 +32,9 @@ import { TeamComponent } from './team/team.component';
     MatIconModule,
     MatSidenavModule,
     MatInputModule,
+    MatSnackBarModule,
     InfiniteScrollModule,
+    FormsModule,
     SharedModule,
     RouterModule
   ]

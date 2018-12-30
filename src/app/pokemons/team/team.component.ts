@@ -23,6 +23,7 @@ export class TeamComponent implements OnInit, OnChanges {
     if (this.newPokemonAdded) {
       if (this.teamPokemons.length < 6) {
         this.teamPokemons.push(this.newPokemonAdded);
+        this.pokemonService.openSnackBar( this.newPokemonAdded.name + ' has been added to the team.');
         this.newPokemonAdded = null;
       }
     }
@@ -44,6 +45,7 @@ export class TeamComponent implements OnInit, OnChanges {
         for (let pokemon of pokemons) {
           this.teamPokemons.push(pokemon);
         }
+        this.pokemonService.openSnackBar('Your team has been retrieved!');
     });
   }
 
@@ -53,11 +55,12 @@ export class TeamComponent implements OnInit, OnChanges {
       this.teamPokemons.splice(index, 1);
       this.selectedPokemon = '';
     }
+    this.pokemonService.openSnackBar(pokemon.name + ' has been removed from the team.');
   }
 
   updateTeam(): void {
     this.pokemonService.updateTeam(this.teamPokemons)
-      .subscribe(result => console.log('Team updated!'));
+      .subscribe(result => this.pokemonService.openSnackBar('Your team has been updated!') );
   }
 
 }
